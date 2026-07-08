@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import NacIcon from "./NacIcon";
 
 export default function Hero() {
+  const [suryaSpins, setSuryaSpins] = useState(0);
+
   return (
     <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 py-24 text-center">
       <motion.img
@@ -12,9 +15,20 @@ export default function Hero() {
         width={500}
         height={462}
         initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-4 h-auto w-40 sm:w-48"
+        animate={{
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          rotate: suryaSpins * 360,
+        }}
+        transition={{
+          opacity: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+          filter: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+          rotate: { duration: 0.4, ease: "easeOut" },
+        }}
+        onClick={() => setSuryaSpins((s) => s + 1)}
+        className="mb-4 h-auto w-40 cursor-pointer select-none sm:w-48"
       />
 
       <motion.h1

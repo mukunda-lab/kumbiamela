@@ -5,6 +5,17 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
+      <motion.img
+        src="/branding/surya.webp"
+        alt=""
+        width={500}
+        height={462}
+        initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-4 h-auto w-20 sm:w-24"
+      />
+
       <motion.h1
         initial={{ opacity: 0, filter: "blur(6px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}

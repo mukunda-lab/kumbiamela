@@ -1,0 +1,51 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function Hero() {
+  return (
+    <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
+      <motion.h1
+        initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        className="text-6xl font-medium tracking-wide sm:text-7xl md:text-8xl"
+      >
+        kumbia mela
+      </motion.h1>
+
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
+        className="mt-8 h-px w-24 origin-center bg-white/80 sm:w-40"
+      />
+
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.75 }}
+        className="mt-8 max-w-xl text-lg text-white/90 sm:text-xl"
+      >
+        Proyecto solista de Jorge Sarmiento. La cumbia se encuentra con los
+        mantras de la India: bajos tropicales y vibraciones espirituales.
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute bottom-10 flex flex-col items-center gap-2 text-white/70"
+      >
+        <span className="text-xs uppercase tracking-[0.3em]">explorar</span>
+        <motion.span
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="text-xl"
+        >
+          ↓
+        </motion.span>
+      </motion.div>
+    </section>
+  );
+}

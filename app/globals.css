@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ff2e00;
+  overscroll-behavior-y: none;
+}
+
+.dot-field {
+  background-image: radial-gradient(
+    rgba(0, 25, 255, 0.55) 2px,
+    transparent 2.5px
+  );
+  background-size: 32px 32px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+::selection {
+  background: #0019ff;
+  color: #ffffff;
+}

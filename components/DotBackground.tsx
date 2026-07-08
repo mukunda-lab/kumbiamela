@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import GradualBlur from "./GradualBlur";
 
 const SPACING = 34;
 const DOT_RADIUS = 2;
@@ -162,9 +163,20 @@ export default function DotBackground() {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-b from-kumbia-orange/0 via-kumbia-orangeDark/10 to-kumbia-orangeDark/40" />
+      <GradualBlur
+        target="parent"
+        position="bottom"
+        height="14rem"
+        strength={3}
+        divCount={6}
+        curve="bezier"
+        exponential
+        opacity={1}
+        zIndex={1}
+      />
       <div
         className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat mix-blend-overlay"
-        style={{ opacity: 0.12 }}
+        style={{ opacity: 0.12, zIndex: 2 }}
       />
     </div>
   );

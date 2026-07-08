@@ -17,6 +17,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-el-messiri)", "serif"],
+        glitch: ["var(--font-rubik-glitch)", "cursive"],
       },
     },
   },

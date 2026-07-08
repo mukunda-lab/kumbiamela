@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { El_Messiri } from "next/font/google";
+import { El_Messiri, Rubik_Glitch } from "next/font/google";
 import "./globals.css";
 
 const elMessiri = El_Messiri({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-el-messiri",
+  display: "swap",
+});
+
+const rubikGlitch = Rubik_Glitch({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-rubik-glitch",
   display: "swap",
 });
 
@@ -47,7 +54,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={elMessiri.variable}>
+    <html
+      lang="es"
+      className={`${elMessiri.variable} ${rubikGlitch.variable}`}
+    >
       <body className="font-display text-white antialiased">{children}</body>
     </html>
   );

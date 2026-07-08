@@ -36,7 +36,9 @@ export default function VideoSection({
           />
         </div>
       </motion.div>
-      <p className="text-2xl font-medium sm:text-3xl">{title}</p>
+      <p className="font-glitch text-3xl leading-relaxed tracking-wide sm:text-4xl">
+        {title}
+      </p>
     </motion.div>
   );
 }

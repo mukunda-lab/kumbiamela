@@ -66,3 +66,13 @@ body {
 .animate-vibrate {
   animation: vibrate-sporadic 3.2s infinite;
 }
+
+.bg-noise {
+  background-image: url("/noise-animated.webp");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-noise {
+    background-image: url("/noise-static.webp");
+  }
+}

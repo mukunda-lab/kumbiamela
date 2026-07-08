@@ -27,7 +27,7 @@ export default function Hero() {
           src="/nombres.webp"
           alt="Kumbia Mela"
           width={720}
-          height={480}
+          height={486}
           className="h-auto w-full"
         />
       </motion.h1>

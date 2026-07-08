@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import NacIcon from "./NacIcon";
 
 export default function Hero() {
   return (
@@ -52,16 +53,22 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-10 flex flex-col items-center gap-2 text-white/70"
+        className="absolute bottom-10 flex flex-col items-center gap-3"
       >
-        <span className="text-xs uppercase tracking-[0.3em]">explorar</span>
-        <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="text-xl"
+        <motion.div
+          animate={{ rotate: [-20, 20, -20] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="text-pink-400"
         >
-          ↓
-        </motion.span>
+          <NacIcon className="h-6 w-auto" />
+        </motion.div>
+        <img
+          src="/branding/parlante2.webp"
+          alt=""
+          width={500}
+          height={441}
+          className="animate-vibrate h-auto w-14"
+        />
       </motion.div>
     </section>
   );

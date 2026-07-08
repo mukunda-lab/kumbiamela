@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import GlitchLogo from "./GlitchLogo";
 
 export default function Hero() {
   return (
@@ -12,7 +11,13 @@ export default function Hero() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="w-full max-w-[420px] sm:max-w-[560px] md:max-w-[680px]"
       >
-        <GlitchLogo />
+        <img
+          src="/nombres.webp"
+          alt="Kumbia Mela"
+          width={720}
+          height={480}
+          className="h-auto w-full"
+        />
       </motion.h1>
 
       <motion.div

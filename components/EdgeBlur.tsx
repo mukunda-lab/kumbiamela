@@ -10,15 +10,15 @@ export default function EdgeBlur() {
         target="parent"
         position="bottom"
         height="100%"
-        strength={3}
-        divCount={6}
+        strength={1.8}
+        divCount={3}
         curve="bezier"
         exponential
         opacity={1}
         zIndex={1}
       />
       <div
-        className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat mix-blend-overlay"
+        className="absolute inset-0 bg-[url('/noise-static.webp')] bg-repeat mix-blend-overlay"
         style={{
           opacity: 0.2,
           zIndex: 2,

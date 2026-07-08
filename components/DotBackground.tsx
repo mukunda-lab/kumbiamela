@@ -2,12 +2,13 @@
 
 import { useEffect, useRef } from "react";
 
-const SPACING = 34;
+const SPACING = 40;
 const DOT_RADIUS = 2;
 const FIELD_RADIUS = 150;
 const REPEL_STRENGTH = 7.5;
 const SPRING = 0.045;
 const DAMPING = 0.82;
+const REST_THRESHOLD = 0.05;
 
 type Dot = {
   ox: number;
@@ -61,26 +62,8 @@ export default function DotBackground() {
       canvas!.style.height = `${height}px`;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       buildDots();
+      ensureRunning();
     }
-
-    function onPointerMove(e: PointerEvent) {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      mouse.active = true;
-    }
-
-    function onPointerLeave() {
-      mouse.active = false;
-      mouse.x = -9999;
-      mouse.y = -9999;
-    }
-
-    resize();
-    window.addEventListener("resize", resize);
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
-    window.addEventListener("pointerdown", onPointerMove, { passive: true });
-    window.addEventListener("pointerleave", onPointerLeave);
-    window.addEventListener("blur", onPointerLeave);
 
     if (reduceMotion) {
       const draw = () => {
@@ -92,21 +75,31 @@ export default function DotBackground() {
           ctx!.fill();
         }
       };
-      draw();
-      return () => {
-        window.removeEventListener("resize", resize);
-        window.removeEventListener("pointermove", onPointerMove);
-        window.removeEventListener("pointerdown", onPointerMove);
-        window.removeEventListener("pointerleave", onPointerLeave);
-        window.removeEventListener("blur", onPointerLeave);
+      const staticResize = () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas!.width = width * dpr;
+        canvas!.height = height * dpr;
+        canvas!.style.width = `${width}px`;
+        canvas!.style.height = `${height}px`;
+        ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildDots();
+        draw();
       };
+      staticResize();
+      window.addEventListener("resize", staticResize);
+      return () => window.removeEventListener("resize", staticResize);
     }
 
     let frame: number;
+    let running = false;
     const fieldRadiusSq = FIELD_RADIUS * FIELD_RADIUS;
 
     function tick() {
       ctx!.clearRect(0, 0, width, height);
+
+      let maxDisplacement = 0;
 
       for (const d of dots) {
         let ax = (d.ox - d.x) * SPRING;
@@ -131,6 +124,7 @@ export default function DotBackground() {
         d.y += d.vy;
 
         const displacement = Math.hypot(d.x - d.ox, d.y - d.oy);
+        if (displacement > maxDisplacement) maxDisplacement = displacement;
         const glow = Math.min(displacement / FIELD_RADIUS, 1);
         const alpha = 0.45 + glow * 0.5;
         const radius = DOT_RADIUS + glow * 1.6;
@@ -143,10 +137,49 @@ export default function DotBackground() {
         ctx!.fill();
       }
 
+      if (!mouse.active && maxDisplacement < REST_THRESHOLD) {
+        running = false;
+        return;
+      }
+
       frame = requestAnimationFrame(tick);
     }
 
-    frame = requestAnimationFrame(tick);
+    function ensureRunning() {
+      if (running || document.hidden) return;
+      running = true;
+      frame = requestAnimationFrame(tick);
+    }
+
+    function onPointerMove(e: PointerEvent) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+      ensureRunning();
+    }
+
+    function onPointerLeave() {
+      mouse.active = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }
+
+    function onVisibilityChange() {
+      if (document.hidden) {
+        running = false;
+        cancelAnimationFrame(frame);
+      } else {
+        ensureRunning();
+      }
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerdown", onPointerMove, { passive: true });
+    window.addEventListener("pointerleave", onPointerLeave);
+    window.addEventListener("blur", onPointerLeave);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       cancelAnimationFrame(frame);
@@ -155,6 +188,7 @@ export default function DotBackground() {
       window.removeEventListener("pointerdown", onPointerMove);
       window.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("blur", onPointerLeave);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 
@@ -163,7 +197,7 @@ export default function DotBackground() {
       <canvas ref={canvasRef} className="absolute inset-0 opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-b from-kumbia-orange/0 via-kumbia-orangeDark/10 to-kumbia-orangeDark/40" />
       <div
-        className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat mix-blend-overlay"
+        className="absolute inset-0 bg-[url('/noise-static.webp')] bg-repeat mix-blend-overlay"
         style={{ opacity: 0.12 }}
       />
     </div>

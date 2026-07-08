@@ -9,9 +9,15 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="text-6xl font-medium tracking-wide sm:text-7xl md:text-8xl"
+        className="w-full max-w-[420px] sm:max-w-[560px] md:max-w-[680px]"
       >
-        kumbia mela
+        <img
+          src="/branding/kumbia-mela-logo.gif"
+          alt="Kumbia Mela"
+          width={1000}
+          height={597}
+          className="h-auto w-full"
+        />
       </motion.h1>
 
       <motion.div

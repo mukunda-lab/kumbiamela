@@ -162,6 +162,10 @@ export default function DotBackground() {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-b from-kumbia-orange/0 via-kumbia-orangeDark/10 to-kumbia-orangeDark/40" />
+      <div
+        className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat mix-blend-overlay"
+        style={{ opacity: 0.12 }}
+      />
     </div>
   );
 }

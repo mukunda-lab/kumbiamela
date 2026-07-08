@@ -1,23 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import GlitchLogo from "./GlitchLogo";
 
 export default function Hero() {
   return (
     <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
       <motion.h1
-        initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, filter: "blur(6px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="w-full max-w-[420px] sm:max-w-[560px] md:max-w-[680px]"
       >
-        <img
-          src="/branding/kumbia-mela-logo.gif"
-          alt="Kumbia Mela"
-          width={1000}
-          height={597}
-          className="h-auto w-full"
-        />
+        <GlitchLogo />
       </motion.h1>
 
       <motion.div

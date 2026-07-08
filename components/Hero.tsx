@@ -14,7 +14,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-4 h-auto w-80 sm:w-96"
+        className="mb-4 h-auto w-40 sm:w-48"
       />
 
       <motion.h1

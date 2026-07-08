@@ -5,7 +5,7 @@ import NacIcon from "./NacIcon";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
+    <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 py-24 text-center">
       <motion.img
         src="/branding/surya.webp"
         alt=""
@@ -14,7 +14,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-4 h-auto w-20 sm:w-24"
+        className="mb-4 h-auto w-80 sm:w-96"
       />
 
       <motion.h1
@@ -53,21 +53,21 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-10 flex flex-col items-center gap-3"
+        className="mt-12 flex flex-col items-center gap-3"
       >
         <motion.div
           animate={{ rotate: [-20, 20, -20] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
           className="text-pink-400"
         >
-          <NacIcon className="h-6 w-auto" />
+          <NacIcon className="h-24 w-auto" />
         </motion.div>
         <img
           src="/branding/parlante2.webp"
           alt=""
           width={500}
           height={441}
-          className="animate-vibrate h-auto w-14"
+          className="animate-vibrate h-auto w-56"
         />
       </motion.div>
     </section>

@@ -18,7 +18,12 @@ export default function EdgeBlur() {
       />
       <div
         className="absolute inset-0 bg-[url('/noise.gif')] bg-repeat mix-blend-overlay"
-        style={{ opacity: 0.2, zIndex: 2 }}
+        style={{
+          opacity: 0.2,
+          zIndex: 2,
+          maskImage: "linear-gradient(to bottom, transparent, black 35%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 35%)",
+        }}
       />
     </div>
   );

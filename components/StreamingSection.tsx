@@ -42,7 +42,9 @@ function PlatformCard({
       >
         {label}
       </a>
-      <div className="w-full overflow-hidden rounded-xl">{children}</div>
+      <div className="h-[480px] w-full overflow-hidden rounded-xl">
+        {children}
+      </div>
     </motion.div>
   );
 }
@@ -58,7 +60,7 @@ export default function StreamingSection() {
     >
       <PlatformCard label="bandcamp" href="https://kumbiamela.bandcamp.com/album/la-cumbia-del-gur">
         <iframe
-          style={{ border: 0, width: "100%", height: "470px" }}
+          style={{ border: 0, width: "100%", height: "100%" }}
           src="https://bandcamp.com/EmbeddedPlayer/album=2272158302/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
           seamless
           title="Kumbia Mela - Bandcamp"
@@ -67,11 +69,8 @@ export default function StreamingSection() {
 
       <PlatformCard label="spotify" href="https://open.spotify.com/artist/67x6rlX7jojlosimUP0djl">
         <iframe
-          style={{ borderRadius: "12px" }}
+          style={{ width: "100%", height: "100%", border: 0 }}
           src="https://open.spotify.com/embed/artist/67x6rlX7jojlosimUP0djl?utm_source=generator"
-          width="100%"
-          height="352"
-          frameBorder="0"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
@@ -82,9 +81,7 @@ export default function StreamingSection() {
       <PlatformCard label="apple music" href="https://music.apple.com/us/artist/kumbia-mela/1534471092">
         <iframe
           allow="autoplay *; encrypted-media *;"
-          frameBorder={0}
-          height="450"
-          style={{ width: "100%", maxWidth: "660px", overflow: "hidden", background: "transparent" }}
+          style={{ width: "100%", height: "100%", border: 0, background: "transparent" }}
           sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
           src="https://embed.music.apple.com/us/artist/kumbia-mela/1534471092"
           title="Kumbia Mela - Apple Music"

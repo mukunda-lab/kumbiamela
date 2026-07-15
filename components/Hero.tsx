@@ -47,27 +47,10 @@ export default function Hero() {
       </motion.h1>
 
       <motion.div
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
-        className="mt-8 h-px w-24 origin-center bg-white/80 sm:w-40"
-      />
-
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.75 }}
-        className="mt-8 max-w-xl text-lg text-white/90 sm:text-xl"
-      >
-        Proyecto solista de Jorge Sarmiento. La cumbia se encuentra con los
-        mantras de la India: bajos tropicales y vibraciones espirituales.
-      </motion.p>
-
-      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="mt-12 flex flex-col items-center gap-3"
+        transition={{ duration: 1, delay: 0.6 }}
+        className="mt-8 flex flex-col items-center gap-3"
       >
         <motion.div
           animate={{ rotate: [-20, 20, -20] }}

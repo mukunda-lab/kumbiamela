@@ -12,17 +12,14 @@ export default function Home() {
       <EdgeBlur />
       <Hero />
 
-      <section className="relative z-10 mx-auto flex max-w-5xl flex-col gap-20 px-6 py-20 sm:gap-28">
-        <VideoSection
-          title="la cumbia del gurú"
-          youtubeId="m0bqBSAjAio"
-          align="left"
-        />
-        <VideoSection
-          title="la cumbia del mahamrityunjaya"
-          youtubeId="Q05hNXzXIAQ"
-          align="right"
-        />
+      <section className="relative z-10 mx-auto max-w-5xl px-6 py-20">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-8">
+          <VideoSection title="la cumbia del gurú" youtubeId="m0bqBSAjAio" />
+          <VideoSection
+            title="la cumbia del mahamrityunjaya"
+            youtubeId="Q05hNXzXIAQ"
+          />
+        </div>
       </section>
 
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-20">

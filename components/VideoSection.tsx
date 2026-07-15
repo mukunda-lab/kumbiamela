@@ -26,7 +26,7 @@ export default function VideoSection({
       </p>
 
       <div className="w-full max-w-xl overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/30">
-        <div className="relative aspect-[4/3] w-full bg-black">
+        <div className="relative aspect-video w-full bg-black">
           {playing ? (
             <iframe
               className="absolute inset-0 h-full w-full"
